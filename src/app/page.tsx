@@ -480,12 +480,13 @@ export default function Home() {
                 <div className="relative bg-emerald-950 rounded-3xl p-3 border border-emerald-700/60 shadow-2xl overflow-hidden">
                   <div className="relative h-[420px] sm:h-[480px] w-full rounded-2xl overflow-hidden bg-emerald-900">
                     <Image
-                      src="/images/zaenul-padli.jpg"
+                      src="/images/profile-studio.jpeg"
                       alt="Bapak Zaenul Padli - Calon Kepala Desa Tetebatu Selatan"
                       fill
                       className="object-cover object-top"
                       priority
                     />
+
                     {/* Inner subtle gradient on portrait bottom */}
                     <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-emerald-950 via-emerald-950/80 to-transparent" />
 

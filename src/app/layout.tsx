@@ -40,7 +40,7 @@ export const metadata: Metadata = {
     siteName: "Zaenul Padli (ZAPA) Official",
     images: [
       {
-        url: "/images/zaenul-padli.jpg",
+        url: "/images/profile-studio.jpeg",
         width: 1200,
         height: 1200,
         alt: "Zaenul Padli (ZAPA) - Calon Kepala Desa Tetebatu Selatan",
@@ -53,13 +53,14 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Zaenul Padli (ZAPA) | Calon Kepala Desa Tetebatu Selatan 2027–2035",
     description: "Mengabdi dengan Hati, Membangun dengan Bukti untuk Tetebatu Selatan.",
-    images: ["/images/zaenul-padli.jpg"],
+    images: ["/images/profile-studio.jpeg"],
   },
   icons: {
-    icon: "/images/zaenul-padli.jpg",
-    apple: "/images/zaenul-padli.jpg",
+    icon: "/images/profile-studio.jpeg",
+    apple: "/images/profile-studio.jpeg",
   },
 };
+
 
 export default function RootLayout({
   children,
