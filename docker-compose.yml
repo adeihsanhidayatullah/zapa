@@ -1,0 +1,12 @@
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: zapa-web-local
+    restart: unless-stopped
+    ports:
+      - "1919:1919"
+    environment:
+      - PORT=1919
+      - NODE_ENV=production

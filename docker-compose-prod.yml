@@ -1,0 +1,44 @@
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: zapa-candidate-web
+    restart: always
+    expose:
+      - "1919"
+    environment:
+      - PORT=1919
+      - NODE_ENV=production
+      - APP_DOMAIN=${APP_DOMAIN:-zapa.tetebatu.com}
+    networks:
+      - zapa-network
+      - traefik-bridge
+    labels:
+      - "traefik.enable=true"
+      # Routing Utama & SSL Let's Encrypt Matcher
+      - "traefik.http.routers.zapa-web.rule=Host(`${APP_DOMAIN:-zapa.tetebatu.com}`)"
+      - "traefik.http.routers.zapa-web.entrypoints=websecure"
+      - "traefik.http.routers.zapa-web.tls=true"
+      - "traefik.http.routers.zapa-web.tls.certresolver=mytlschallenge"
+
+      # Penunjuk Port Kontainer Internal (Port 1919) & Jaringan Traefik
+      - "traefik.http.services.zapa-web.loadbalancer.server.port=1919"
+      - "traefik.docker.network=n8n-docker_default"
+
+      # Middleware Keamanan
+      - "traefik.http.middlewares.zapa-headers.headers.sslRedirect=true"
+      - "traefik.http.middlewares.zapa-headers.headers.stsSeconds=315360000"
+      - "traefik.http.middlewares.zapa-headers.headers.browserXSSFilter=true"
+      - "traefik.http.middlewares.zapa-headers.headers.contentTypeNosniff=true"
+      - "traefik.http.middlewares.zapa-headers.headers.forceSTSHeader=true"
+
+      # Ikat Middleware ke Router
+      - "traefik.http.routers.zapa-web.middlewares=zapa-headers@docker"
+
+networks:
+  zapa-network:
+    driver: bridge
+  traefik-bridge:
+    external: true
+    name: n8n-docker_default
