@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
+    "start:standalone": "PORT=1919 node .next/standalone/server.js",
     "lint": "eslint"
+
   },
   "dependencies": {
     "canvas-confetti": "^1.9.4",
